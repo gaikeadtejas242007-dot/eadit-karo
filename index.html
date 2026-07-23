@@ -792,7 +792,20 @@
       transition: background 0.2s; font-size: 1.2rem; color: var(--fg); line-height: 1;
     }
     .lightbox-close:hover { background: rgba(255,255,255,0.15); }
-    .lightbox-img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+    .lightbox-img,
+    .lightbox-video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: #000;
+    }
+    .lightbox-img { display: block; }
+    .lightbox-video { display: none; }
+    .lightbox-video iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
     .lightbox-footer {
       padding: 14px 20px; background: rgba(0,0,0,0.3);
       display: flex; align-items: center; gap: 10px;
@@ -966,62 +979,62 @@
 
     <!-- Grid -->
     <div class="portfolio-grid" id="portfolio-grid">
-      <div class="portfolio-card" data-category="Gaming" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Gaming" data-video-url="https://youtu.be/kB0htdq-SPY?si=gZuNmtDs-8U2c2NF" onclick="openLightbox(this)">
         <img src="images/gaming.jpg" alt="Apex Legends Montage" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Gaming</div><div class="card-title">Apex Legends Montage</div></div>
       </div>
-      <div class="portfolio-card" data-category="Short-form" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Short-form" data-video-url="https://youtu.be/At4oInofJw4?si=jw-9L_VeyfLjQxwX" onclick="openLightbox(this)">
         <img src="images/short-form.jpg" alt="Viral Hook Format" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Short-form</div><div class="card-title">Viral Hook Format</div></div>
       </div>
-      <div class="portfolio-card" data-category="Football Edits" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Football Edits" data-video-url="https://youtu.be/WlRb7-mRfrk?si=pA6HeNkisX74zD9c" onclick="openLightbox(this)">
         <img src="images/football.jpg" alt="UCL Highlights" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Football Edits</div><div class="card-title">UCL Highlights</div></div>
       </div>
-      <div class="portfolio-card" data-category="eCommerce Ads" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="eCommerce Ads" data-video-url="https://youtu.be/YGQBm9Mnad8?si=zt5prl2H55YhgtcN" onclick="openLightbox(this)">
         <img src="images/ecommerce.jpg" alt="Premium Watch Launch" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">eCommerce Ads</div><div class="card-title">Premium Watch Launch</div></div>
       </div>
-      <div class="portfolio-card" data-category="Documentary" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Documentary" data-video-url="https://youtu.be/RzD9YF0B8yc?si=YRxWFBQ-PU7JmYTe" onclick="openLightbox(this)">
         <img src="images/documentary.jpg" alt="Urban Chronicles" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Documentary</div><div class="card-title">Urban Chronicles</div></div>
       </div>
-      <div class="portfolio-card" data-category="Long-form" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Long-form" data-video-url="https://youtu.be/Llz7ISs6hVI?si=p7ds-B-TS_HxWNCy" onclick="openLightbox(this)">
         <img src="images/long-form.jpg" alt="The Masterclass" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Long-form</div><div class="card-title">The Masterclass</div></div>
       </div>
-      <div class="portfolio-card" data-category="Color Grading" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Color Grading" data-video-url="https://youtu.be/Tl7rtMiOrvY?si=tRRfr9QKuJFoRKQ5" onclick="openLightbox(this)">
         <img src="images/color-grading.jpg" alt="Cinematic Shift" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Color Grading</div><div class="card-title">Cinematic Shift</div></div>
       </div>
-      <div class="portfolio-card" data-category="Anime" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Anime" data-video-url="https://youtu.be/MG11zhX6_jo?si=j8GaIsooNxSgoDF4" onclick="openLightbox(this)">
         <img src="images/anime.jpg" alt="Cyberpunk Action" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Anime</div><div class="card-title">Cyberpunk Action</div></div>
       </div>
-      <div class="portfolio-card" data-category="Ads" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Ads" data-video-url="https://youtu.be/GZ1vlvYNjXc?si=6Z_h3l79DHwTYj2v" onclick="openLightbox(this)">
         <img src="images/ads.jpg" alt="Future Tech Promo" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Ads</div><div class="card-title">Future Tech Promo</div></div>
       </div>
-      <div class="portfolio-card" data-category="Gaming" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Gaming" data-video-url="https://youtu.be/GZ1vlvYNjXc?si=6Z_h3l79DHwTYj2v" onclick="openLightbox(this)">
         <img src="images/gaming.jpg" alt="Valorant Ranked" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Gaming</div><div class="card-title">Valorant Ranked</div></div>
       </div>
-      <div class="portfolio-card" data-category="Short-form" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Short-form" data-video-url="https://youtu.be/MG11zhX6_jo?si=j8GaIsooNxSgoDF4" onclick="openLightbox(this)">
         <img src="images/short-form.jpg" alt="Daily Motivation" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Short-form</div><div class="card-title">Daily Motivation</div></div>
       </div>
-      <div class="portfolio-card" data-category="Long-form" onclick="openLightbox(this)">
+      <div class="portfolio-card" data-category="Long-form" data-video-url="https://youtu.be/Llz7ISs6hVI?si=p7ds-B-TS_HxWNCy" onclick="openLightbox(this)">
         <img src="images/long-form.jpg" alt="Podcast Supercut" />
         <div class="card-overlay"><div class="play-circle"><svg width="20" height="22" viewBox="0 0 20 22" fill="white"><polygon points="2,1 18,11 2,21"/></svg></div></div>
         <div class="card-info"><div class="card-cat">Long-form</div><div class="card-title">Podcast Supercut</div></div>
@@ -1323,8 +1336,11 @@
       <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
     </div>
     <img class="lightbox-img" id="lb-img" src="" alt="" />
+    <div class="lightbox-video" id="lb-video-container">
+      <iframe id="lb-video" src="" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <div class="lightbox-footer">
-      <div class="lightbox-play-btn">
+      <div class="lightbox-play-btn" id="lightbox-play-btn">
         <svg width="12" height="14" viewBox="0 0 12 14" fill="white"><polygon points="1,1 11,7 1,13"/></svg>
         Watch on YouTube
       </div>
@@ -1514,20 +1530,64 @@ if (contactForm) {
   });
 
   /* ─── LIGHTBOX ─── */
+  let currentVideoUrl = 'https://www.youtube.com/watch?v=kB0htdq-SPY';
+  const lightboxPlayBtn = document.getElementById('lightbox-play-btn');
+  const lightboxVideo = document.getElementById('lb-video');
+  const lightboxImg = document.getElementById('lb-img');
+  const lightboxVideoContainer = document.getElementById('lb-video-container');
+
+  function toEmbedUrl(url) {
+    if (!url) return '';
+    const youTubeIdMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|v\/))([A-Za-z0-9_-]{11})/);
+    const videoId = youTubeIdMatch ? youTubeIdMatch[1] : null;
+    return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0` : url;
+  }
+
   function openLightbox(card) {
     const img   = card.querySelector('img');
     const cat   = card.querySelector('.card-cat');
     const title = card.querySelector('.card-title');
-    document.getElementById('lb-img').src   = img.src;
-    document.getElementById('lb-img').alt   = title.textContent;
+    const videoUrl = card.dataset.videoUrl || 'https://youtu.be/kB0htdq-SPY?si=gZuNmtDs-8U2c2NF';
+    const embedUrl = toEmbedUrl(videoUrl);
+
+    currentVideoUrl = videoUrl;
     document.getElementById('lb-cat').textContent   = cat.textContent;
     document.getElementById('lb-title').textContent = title.textContent;
+    document.getElementById('lb-img').src   = img.src;
+    document.getElementById('lb-img').alt   = title.textContent;
+    if (lightboxVideo) {
+      lightboxVideo.src = embedUrl;
+    }
+    if (lightboxImg) {
+      lightboxImg.style.display = 'none';
+    }
+    if (lightboxVideoContainer) {
+      lightboxVideoContainer.style.display = 'block';
+    }
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+
+  if (lightboxPlayBtn) {
+    lightboxPlayBtn.addEventListener('click', () => {
+      if (currentVideoUrl) {
+        window.open(currentVideoUrl, '_blank');
+      }
+    });
+  }
+
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
     document.body.style.overflow = '';
+    if (lightboxVideo) {
+      lightboxVideo.src = '';
+    }
+    if (lightboxImg) {
+      lightboxImg.style.display = 'block';
+    }
+    if (lightboxVideoContainer) {
+      lightboxVideoContainer.style.display = 'none';
+    }
   }
   function closeLightboxOutside(e) {
     if (e.target === document.getElementById('lightbox')) closeLightbox();
