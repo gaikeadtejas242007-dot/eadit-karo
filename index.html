@@ -817,8 +817,33 @@
     }
     .lightbox-play-btn:hover { background: hsl(350,89%,48%); }
     .lightbox-note { font-size: 0.8rem; color: var(--fg-40); }
+    /* Responsive and touch-friendly adjustments */
+    .lightbox-inner {
+      width: 100%;
+      max-width: 980px;
+      margin: 20px;
+      border-radius: 12px;
+    }
+
+    .lightbox-video iframe { height: 100%; }
+
+    .portfolio-card { touch-action: manipulation; }
+    .portfolio-card .play-circle { width: 56px; height: 56px; }
+
+    .btn-primary, .btn-white, .btn-form, .btn-ghost { min-height: 48px; padding-top: 12px; padding-bottom: 12px; }
+
+    input, textarea, select { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+
+    @media(max-width:480px){
+      .hero-content { padding: 80px 16px 24px; }
+      .hero-h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      .lightbox-inner { margin: 12px; border-radius: 8px; }
+      .contact-header { padding: 0 12px; }
+      .contact-card { padding: 20px; }
+    }
   </style>
 </head>
+ 
 
 <body>
 
@@ -1497,6 +1522,17 @@ if (contactForm) {
   /* ─── PORTFOLIO FILTER ─── */
   const pills = document.querySelectorAll('.pill');
   const cards = document.querySelectorAll('.portfolio-card');
+
+  // Make portfolio cards keyboard-focusable and support Enter/Space to open
+  cards.forEach(card => {
+    card.tabIndex = 0;
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openLightbox(card);
+      }
+    });
+  });
 
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
