@@ -785,6 +785,7 @@
       display: none; position: fixed; inset: 0; z-index: 200;
       background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
       align-items: center; justify-content: center; padding: 24px;
+      overflow-y: auto;
     }
     #lightbox.open { display: flex; }
     .lightbox-inner {
@@ -833,21 +834,30 @@
 
     /* ensure iframe doesn't overflow small viewports and content stays centered */
     @media(max-width:680px){
-      .lightbox-inner { max-height: calc(100vh - 24px); margin: 12px; }
+      .lightbox-inner {
+        max-height: calc(100vh - 24px);
+        margin: 12px auto;
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+      }
       .lightbox-video { padding-top: 56.25%; }
       .lightbox-img { max-height: calc(100vh - 140px); }
     }
     /* Further tighten layout for very small phones to ensure video fits and is centered */
     @media(max-width:480px){
-      .lightbox-inner { width: calc(100vw - 24px); max-width: none; margin: 8px; border-radius: 8px; }
+      .lightbox-inner {
+        width: calc(100vw - 16px);
+        max-width: calc(100vw - 16px);
+        margin: 8px auto;
+        border-radius: 8px;
+      }
       .lightbox-top { padding: 10px 12px; }
       .lightbox-footer { padding: 10px 12px; }
-      .lightbox-video { padding-top: 56.25%; }
+      .lightbox-video { padding-top: 56.25%; width: 100%; }
       .lightbox-video iframe { max-height: calc(100vh - 120px); width: 100%; }
       .lightbox-img { max-height: calc(100vh - 120px); width: 100%; height: auto; }
-      /* center the inner content vertically when lightbox opens */
       #lightbox { align-items: center; }
-      .lightbox-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+      .lightbox-inner { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; }
     }
 
     .portfolio-card { touch-action: manipulation; }
