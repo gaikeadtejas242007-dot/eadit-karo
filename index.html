@@ -68,7 +68,163 @@
 
 .contact-form {
     display: grid;
-    gap: 14px;
+    gap: 18px;
+}
+
+.contact-section {
+  padding: 96px 0;
+  background: var(--bg);
+}
+
+.contact-header {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.contact-header h2 {
+  font-family: var(--font-disp);
+  font-weight: 900;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  margin-bottom: 18px;
+}
+
+.contact-header p {
+  color: var(--fg-60);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media(min-width:768px){ .contact-grid{ grid-template-columns: 0.95fr 1.05fr; } }
+
+.contact-info,
+.contact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 32px;
+}
+
+.contact-info h3 {
+  margin-bottom: 20px;
+  font-size: 1.25rem;
+  color: var(--fg);
+}
+
+.contact-info p {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: var(--fg-60);
+  font-size: 0.97rem;
+}
+
+.contact-info .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  background: rgba(232,22,58,0.12);
+  color: var(--primary);
+  font-size: 0.95rem;
+}
+
+.input-group {
+  display: grid;
+  gap: 10px;
+}
+
+.input-group label {
+  font-size: 0.95rem;
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 18px;
+  background: rgba(255,255,255,0.03);
+  color: var(--fg);
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(232,22,58,0.12);
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 160px;
+}
+
+.form-action {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: stretch;
+}
+@media(min-width:520px){ .form-action{ flex-direction: row; justify-content: space-between; align-items: center; } }
+
+.btn-form {
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  padding: 16px 26px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.btn-form:hover { transform: translateY(-1px); background: hsl(350,89%,48%); }
+
+.message-count {
+  font-size: 0.92rem;
+  color: var(--fg-40);
+  text-align: right;
+}
+
+.contact-summary {
+  color: var(--fg-60);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  min-height: 1.5rem;
+}
+
+.contact-status {
+  overflow: hidden;
+  opacity: 0;
+  max-height: 0;
+  padding: 0 18px;
+  border-radius: 18px;
+  background: rgba(82, 242, 176, 0.12);
+  color: #bdf5d6;
+  transition: opacity 0.25s ease, max-height 0.25s ease, padding 0.25s ease;
+}
+.contact-status.visible {
+  opacity: 1;
+  max-height: 100px;
+  padding: 14px 18px;
+}
+.contact-status.error {
+  background: rgba(247, 75, 120, 0.12);
+  color: #ffcad4;
 }
 
 
@@ -1032,7 +1188,7 @@
 
 
 <!-- ══════════════════ CTA ══════════════════ -->
-<section id="contact">
+<section id="contact-cta">
   <div class="cta-glow"></div>
   <div class="container">
     <div class="cta-box reveal">
@@ -1057,45 +1213,63 @@
   </div>
 </section>
 
-<!-- contect informTION  -->
-<section id="contact">
-            <h2>Contact Me</h2>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Get in touch</h3>
-                    <p><i class="fa-solid fa-user"></i> Tejas Gaikwad</p>
-                    <p><i class="fa-solid fa-location-dot"></i> Kokangaon, Tal-Niphad, Dist-Nashik</p>
-                    <p><i class="fa-solid fa-envelope"></i> tejasgaikwad@example.com</p>
-                    <p><i class="fa-solid fa-language"></i> English, Hindi, Marathi</p>
-                    <p><i class="fa-solid fa-phone"></i> +91 9325685085</p>
-                </div>
-                <div class="contact-card">
-                    <form class="contact-form">
-                        <div class="input-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-                        </div>
-                        <div class="input-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Enter subject">
-                        </div>
-                        <div class="input-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Submit Form</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+<!-- contact information -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-header reveal">
+      <h2>Contact Me</h2>
+      <p>Have a project brief, a creative idea, or a quick question? Send it through and I’ll get back to you with a plan.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <h3>Get in touch</h3>
+        <p><span class="icon">👤</span> Tejas Gaikwad</p>
+        <p><span class="icon">📍</span> Kokangaon, Tal-Niphad, Dist-Nashik</p>
+        <p><span class="icon">✉️</span> tejasgaikwad@example.com</p>
+        <p><span class="icon">🌐</span> English, Hindi, Marathi</p>
+        <p><span class="icon">📞</span> +91 9325685085</p>
+      </div>
+
+      <div class="contact-card">
+        <form class="contact-form" novalidate>
+          <div class="input-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="input-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+          </div>
+
+          <div class="input-group">
+            <label for="subject">Project Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What is this project about?">
+          </div>
+
+          <div class="input-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+            <div class="message-count" id="message-count">0/500</div>
+          </div>
+
+          <div class="contact-summary" id="contact-summary">Tell us what this project is about.</div>
+
+          <div class="form-action">
+            <button type="submit" class="btn-form">Send Message</button>
+            <div class="contact-status" id="contact-status"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══════════════════ FOOTER ══════════════════ -->
 <footer>
@@ -1164,14 +1338,75 @@
 
 
 const contactForm = document.querySelector(".contact-form");
+const messageInput = document.getElementById('message');
+const messageCount = document.getElementById('message-count');
+const contactSummary = document.getElementById('contact-summary');
+const contactStatus = document.getElementById('contact-status');
+
+function updateMessageCount() {
+  if (!messageInput || !messageCount) return;
+  const max = 500;
+  const current = messageInput.value.length;
+  messageCount.textContent = `${current}/${max}`;
+  if (current > max) {
+    messageCount.style.color = '#f87171';
+  } else {
+    messageCount.style.color = '';
+  }
+}
+
+function updateSummary() {
+  if (!contactSummary) return;
+  const subject = document.getElementById('subject')?.value.trim();
+  const message = messageInput?.value.trim();
+
+  if (subject && message) {
+    contactSummary.textContent = `Looks great! We'll review your ${subject.toLowerCase()} brief and respond quickly.`;
+  } else if (subject) {
+    contactSummary.textContent = `Nice subject. Add a few details so I can quote the right workflow.`;
+  } else if (message) {
+    contactSummary.textContent = `Thanks for the message. A short subject will help speed up the reply.`;
+  } else {
+    contactSummary.textContent = 'Tell us what this project is about.';
+  }
+}
+
+if (messageInput) {
+  messageInput.addEventListener('input', () => {
+    updateMessageCount();
+    updateSummary();
+  });
+}
 
 if (contactForm) {
+  updateMessageCount();
+  updateSummary();
+
   contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const name = document.getElementById("name").value;
-    alert(`Thank you ${name}! Your message has been received.`);
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = messageInput.value.trim();
+
+    contactStatus.classList.remove('error');
+
+    if (!name || !email || !message) {
+      contactStatus.textContent = 'Please complete the required fields before sending.';
+      contactStatus.classList.add('visible', 'error');
+      return;
+    }
+
+    contactStatus.textContent = `Thanks ${name}! Your message is on its way.`;
+    contactStatus.classList.add('visible');
+
+    setTimeout(() => {
+      contactStatus.classList.remove('visible');
+    }, 6000);
+
     contactForm.reset();
+    updateMessageCount();
+    updateSummary();
   });
 }
 
