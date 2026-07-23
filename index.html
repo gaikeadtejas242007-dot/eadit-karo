@@ -270,8 +270,13 @@
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
     /* ─── UTILITIES ─────────────────────────────────────── */
-    .container { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .container { width: 100%; max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    @media(min-width:520px){ .container{ padding: 0 32px; } }
     @media(min-width:768px){ .container{ padding: 0 48px; } }
+    @media(min-width:1400px){ .container{ max-width:1800px; } }
+
+    /* Set a responsive base font-size to improve scaling across devices */
+    html { font-size: clamp(14px, 1.6vw, 18px); -webkit-text-size-adjust: 100%; }
 
     .text-primary { color: var(--primary); }
     .text-gradient-primary {
@@ -411,7 +416,7 @@
     }
     .hero-content {
       position: relative; z-index: 10; text-align: center;
-      padding: 120px 24px 40px; max-width: 960px; width: 100%;
+      padding: 120px 24px 40px; max-width: 1100px; width: 100%;
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -427,8 +432,8 @@
     }
     .hero-h1 {
       font-family: var(--font-disp); font-weight: 900;
-      font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1.05;
-      letter-spacing: -0.02em; margin-bottom: 28px;
+      font-size: clamp(1.9rem, 6.8vw, 6.5rem); line-height: 1.02;
+      letter-spacing: -0.02em; margin-bottom: 22px;
       animation: fadeUp 0.7s var(--ease-out) 0.2s both;
     }
     .hero-sub {
@@ -546,6 +551,12 @@
     }
     @media(min-width:640px){ .portfolio-grid{ grid-template-columns: repeat(2,1fr); } }
     @media(min-width:1024px){ .portfolio-grid{ grid-template-columns: repeat(3,1fr); } }
+
+    /* Make cards slightly larger tap targets on small screens */
+    @media(max-width:480px){
+      .portfolio-card { padding: 10px; }
+      .portfolio-card .card-info { padding: 16px; }
+    }
 
     .portfolio-card {
       position: relative; border-radius: 14px; overflow: hidden;
@@ -777,8 +788,9 @@
     }
     #lightbox.open { display: flex; }
     .lightbox-inner {
-      position: relative; width: 100%; max-width: 860px; background: var(--bg-card);
+      position: relative; width: 100%; max-width: 980px; background: var(--bg-card);
       border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+      display: flex; flex-direction: column; max-height: calc(100vh - 48px);
     }
     .lightbox-top {
       display: flex; align-items: center; justify-content: space-between;
@@ -792,20 +804,14 @@
       transition: background 0.2s; font-size: 1.2rem; color: var(--fg); line-height: 1;
     }
     .lightbox-close:hover { background: rgba(255,255,255,0.15); }
-    .lightbox-img,
-    .lightbox-video {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-      background: #000;
+    /* Media wrapper keeps aspect ratio and scales with viewport */
+    .lightbox-media { width: 100%; position: relative; background: #000; }
+    .lightbox-img {
+      display: block; width: 100%; height: auto; object-fit: cover;
+      max-height: calc(100vh - 180px);
     }
-    .lightbox-img { display: block; }
-    .lightbox-video { display: none; }
-    .lightbox-video iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
+    .lightbox-video { display: none; position: relative; width: 100%; padding-top: 56.25%; }
+    .lightbox-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     .lightbox-footer {
       padding: 14px 20px; background: rgba(0,0,0,0.3);
       display: flex; align-items: center; gap: 10px;
@@ -825,7 +831,24 @@
       border-radius: 12px;
     }
 
-    .lightbox-video iframe { height: 100%; }
+    /* ensure iframe doesn't overflow small viewports and content stays centered */
+    @media(max-width:680px){
+      .lightbox-inner { max-height: calc(100vh - 24px); margin: 12px; }
+      .lightbox-video { padding-top: 56.25%; }
+      .lightbox-img { max-height: calc(100vh - 140px); }
+    }
+    /* Further tighten layout for very small phones to ensure video fits and is centered */
+    @media(max-width:480px){
+      .lightbox-inner { width: calc(100vw - 24px); max-width: none; margin: 8px; border-radius: 8px; }
+      .lightbox-top { padding: 10px 12px; }
+      .lightbox-footer { padding: 10px 12px; }
+      .lightbox-video { padding-top: 56.25%; }
+      .lightbox-video iframe { max-height: calc(100vh - 120px); width: 100%; }
+      .lightbox-img { max-height: calc(100vh - 120px); width: 100%; height: auto; }
+      /* center the inner content vertically when lightbox opens */
+      #lightbox { align-items: center; }
+      .lightbox-inner { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    }
 
     .portfolio-card { touch-action: manipulation; }
     .portfolio-card .play-circle { width: 56px; height: 56px; }
@@ -835,11 +858,17 @@
     input, textarea, select { -webkit-tap-highlight-color: rgba(0,0,0,0); }
 
     @media(max-width:480px){
-      .hero-content { padding: 80px 16px 24px; }
-      .hero-h1 { font-size: clamp(2rem, 8vw, 3rem); }
+      .hero-content { padding: 64px 12px 20px; }
+      .hero-h1 { font-size: clamp(1.6rem, 9.5vw, 2.6rem); }
+      .hero-sub { font-size: 0.95rem; max-width: 92%; margin: 0 auto 28px; }
+      .hero-badge { font-size: 0.78rem; padding: 6px 10px; }
+      .hero-btns { gap: 10px; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; padding: 14px 18px; }
       .lightbox-inner { margin: 12px; border-radius: 8px; }
       .contact-header { padding: 0 12px; }
-      .contact-card { padding: 20px; }
+      .contact-card { padding: 18px; }
+      .nav-inner { padding: 8px 12px; }
+      .nav-logo { font-size: 1.05rem; }
     }
   </style>
 </head>
